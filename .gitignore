@@ -1,0 +1,15 @@
+echo "
+.vs/
+*.obj
+*.exe
+*.pdb
+*.log
+*.tlog
+*.ilk
+*.idb
+*.user
+*.suo
+*.db
+*.vcxproj.filters
+*.vcxproj.user
+*.ipch

@@ -28,10 +28,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AeroFlot.h" />
+    <ClInclude Include="FileReader.h" />
     <ClInclude Include="Manager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AeroFlot.cpp" />
+    <ClCompile Include="FileReader.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Manager.cpp" />
   </ItemGroup>

@@ -1,4 +1,5 @@
 #include "AeroFlot.h"
+#include "FileReader.h"
 #include "Manager.h"
 #include <iostream>
 #include <Windows.h>
@@ -11,11 +12,13 @@ int main() {
     SetConsoleOutputCP(1251);
 
     Manager manager;//создаем объект менеджера
+    FileReader filereader;
+
     int choice_1 = 0;
 
     while (choice_1 != 3) {
         cout << "-------------МЕНЮ----------------\n\n" << endl;
-        cout << "1 - Задание 1 - АЭРОФЛОТ\n2 - Задание 2 - \n3 - Завершить\n";
+        cout << "1 - Задание АЭРОФЛОТ\n2 - Задание ФАЙЛОВЫЕ И СТРОКОВЫЕ ПОТОКИ \n3 - Завершить\n";
         cin >> choice_1;
 
         switch (choice_1) {
@@ -32,6 +35,7 @@ int main() {
                 switch (choice_2) {
                 case 1: {
                     //добавление рейса
+                    system("cls");
                     AeroFlot flight;//объект класса
                     cin >> flight;//заполняем элемент с использованием перегрузки
                     manager.AddFlight(flight);
@@ -40,6 +44,7 @@ int main() {
                 }
                 case 2: {
                     //сначала находим нужный рейс
+                    system("cls");
                     string search;
                     size_t index;
                     cin.ignore(); // Убираем лишний символ новой строки из предыдущего ввода
@@ -53,16 +58,19 @@ int main() {
                 }
                 case 3: {
                     //сначала находим нужную запись
+                    system("cls");
                     string search;
                     size_t index;
                     cout << "Введите пункт назначения\n";
                     cin >> search;
+                    system("cls");
                     index = manager.SearchFlight(search);
                     manager.EditFlight(index);
                     manager.SortArray();
                     break;
                 }
                 case 4: {
+                    system("cls");
                     //вывод на экран
                     manager.PrintAll();
                     system("pause");
@@ -70,6 +78,7 @@ int main() {
                 }
                 case 5: {
                     //поиск записи
+                    system("cls");
                     string search;
                     cout << "Введите пункт назначения\n";
                     cin >> search;
@@ -77,6 +86,7 @@ int main() {
                     break;
                 }
                 case 6: {
+                    system("cls");
                     //поиск по самолетам
                     string search2;
                     cin.ignore();
@@ -88,7 +98,45 @@ int main() {
                     break;
                 }
                 }
-            } while (choice_2 != 6);
+            } while (choice_2 != 7);
+            break;
+        }
+        case 2: {
+            //выбрали второе задание
+            int choice_3 = 0;
+
+            do {
+                system("cls");
+                cout << "-------------МЕНЮ----------------\n\n" << endl;
+                cout << "1 - Прочитать строки из файла\n2 - Выйти\n";
+                cin >> choice_3;
+
+
+                switch (choice_3) {
+                case 1: {
+                    try {
+                        //добавление рейса
+                        system("cls");
+                        string filename;
+                        cout << "Введите название файла" << endl;
+                        cin >> filename;
+                        system("cls");
+                        filereader.Read(filename);
+                        filereader.Print();
+                        system("pause");
+                        system("cls");
+                        break;
+                    }
+                    catch (const runtime_error& e) {
+                        cerr << "Ошибка: " << e.what() << endl;
+                        system("pause");
+                        system("cls");
+                        break;
+                    }
+                }
+                }
+            } while (choice_3 != 2);
+            system("cls");
             break;
         }
         }

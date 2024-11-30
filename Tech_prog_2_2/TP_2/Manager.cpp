@@ -32,7 +32,7 @@ size_t Manager::SearchFlight(string& dest) {
 		if (flights[i].getDest() == dest) {
 			//значит нашли совпадение
 			tmp = i;
-			cout << "       №: " << tmp << endl;
+			cout << "       НОМЕР ЗАПИСИ: " << tmp << endl;
 			cout << flights[i] << endl;
 		}
 	}
@@ -47,6 +47,7 @@ size_t Manager::SearchFlight(string& dest) {
 	cin >> tmp;
 
 	system("pause");
+	system("cls");
 	return tmp;
 }
 
@@ -56,7 +57,7 @@ void Manager::SearchSimple(string& dest) {
 		if (flights[i].getDest() == dest) {
 			//значит нашли совпадение
 			tmp = i;
-			cout << "       №: " << tmp << endl;
+			cout << "       НОМЕР ЗАПИСИ: " << tmp << endl;
 			cout << flights[i] << endl;
 		}
 	}
@@ -90,7 +91,9 @@ void Manager::EditFlight(size_t index) {
 		if (answer == 1) {
 			//значит выбрали изменение пункта назначения
 			cout << "Введи новый пункт назначения\n";
-			cin >> tmp;
+			cin.ignore(); // Убираем лишний символ новой строки из предыдущего ввода
+			getline(cin, tmp);
+			//cin >> tmp;
 			flights[index].setDest(tmp);
 			cout << "Редактирование выполнено успешно" << endl;
 			system("pause");
@@ -108,7 +111,9 @@ void Manager::EditFlight(size_t index) {
 		else if (answer == 3) {
 			//значит выбрали тип самолета
 			cout << "Введи новый тип самолета\n";
-			cin >> tmp;
+			cin.ignore(); // Убираем лишний символ новой строки из предыдущего ввода
+			getline(cin, tmp);
+			//cin >> tmp;
 			flights[index].setType(tmp);
 			cout << "Редактирование выполнено успешно" << endl;
 			system("pause");
@@ -141,7 +146,7 @@ void Manager::SearchType(string& type) {
 		if (flights[i].getType() == type) {
 			//значит нашли совпадение
 			tmp = i;
-			cout << "       №: " << tmp << endl;
+			cout << "       НОМЕР ЗАПИСИ: " << tmp << endl;
 			cout << flights[i] << endl;
 		}
 	}

@@ -99,6 +99,7 @@ int main() {
                 }
                 }
             } while (choice_2 != 7);
+            system("cls");
             break;
         }
         case 2: {

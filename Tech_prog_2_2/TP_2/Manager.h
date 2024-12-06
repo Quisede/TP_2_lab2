@@ -22,5 +22,6 @@ public:
 	void Resize();//изменение общей вместимости массива (для оптимизации)
 	void PrintAll() const;//печать всех рейсов
 	size_t getSize() const;//геттер на текущий размер массива
+	bool IsFlightNumberUnique(int flightNumber) const;
 };
 

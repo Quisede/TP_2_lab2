@@ -5,6 +5,13 @@ Manager::Manager() : flights(new AeroFlot[10]), size(0), capacity(10) {}//констр
 Manager::~Manager() { delete[] flights; } //освобождаем память из под массива элементов
 
 void Manager::AddFlight(AeroFlot& record) {
+	if (!IsFlightNumberUnique(record.getNumb())) {
+		cout << "Рейс с таким номером уже существует!\nРейс не добавлен, попробуйте снова!\n" << endl;
+		system("pause");
+		system("cls");
+		return;
+	}
+
 	if (size == capacity) {
 		//если текущее количество элементов = макс числу элементов в массиве, то увеличваем вместимость
 		Resize();
@@ -186,4 +193,13 @@ void Manager::PrintAll() const {
 	for (size_t i = 0; i < size; i++) {
 		cout << flights[i] << endl;
 	}
+}
+
+bool Manager::IsFlightNumberUnique(int flightNumber) const {
+	for (size_t i = 0; i < size; i++) {
+		if (flights[i].getNumb() == flightNumber) {
+			return false; // Номер рейса уже существует
+		}
+	}
+	return true; // Номер уникален
 }

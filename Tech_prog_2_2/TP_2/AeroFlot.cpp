@@ -1,5 +1,6 @@
 #include "AeroFlot.h"
 #include <iostream>
+
 using namespace std;
 
 istream& operator>>(istream& is, AeroFlot& flight) {
